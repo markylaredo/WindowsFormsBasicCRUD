@@ -2,7 +2,7 @@
 Basic CRUD Operation using dapper
 
 ## TODO
-* Run Scripts 
+* Run Script (Sql Service 2012 or higher)
 ```sql
 USE [TUTStudentDb]
 GO
@@ -25,4 +25,3 @@ GO
 ALTER TABLE [dbo].[Student] ADD  CONSTRAINT [DF_Student_Recorded]  DEFAULT (sysdatetime()) FOR [Recorded]
 GO
 ```
-(Sql Service 2012 or higher)
