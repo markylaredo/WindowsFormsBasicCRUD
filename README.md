@@ -1,5 +1,5 @@
-# WindowsFormsBasicCRUD
-Basic CRUD Operation using dapper.
+# Dapper CRUD
+Basic CRUD Operation using dapper ORM.
 
 ## TODO
 * Run Script (Sql Service 2012 or higher)
