@@ -14,11 +14,11 @@ using Dapper;
 
 namespace WindowsFormsBasicCRUD
 {
-	public partial class Form1 : Form
+	public partial class Registration : Form
 	{
 		private const string Connection = "Data Source=.;Initial Catalog=TUTStudentDb;Integrated Security=True";
 
-		public Form1()
+		public Registration()
 		{
 			InitializeComponent();
 		}
