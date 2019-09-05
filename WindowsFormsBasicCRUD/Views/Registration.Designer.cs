@@ -1,6 +1,6 @@
-﻿namespace WindowsFormsBasicCRUD
+﻿namespace WindowsFormsBasicCRUD.Views
 {
-	partial class Registration
+	partial class FrmUpdate
 	{
 		/// <summary>
 		/// Required designer variable.
@@ -185,17 +185,19 @@
 			this.groupBox1.TabIndex = 14;
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "Personal Info";
+			this.groupBox1.Enter += new System.EventHandler(this.GroupBox1_Enter);
 			// 
-			// Registration
+			// FrmUpdate
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(378, 383);
 			this.Controls.Add(this.groupBox1);
 			this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
-			this.Name = "Registration";
+			this.Name = "FrmUpdate";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "Registration Form";
 			this.Load += new System.EventHandler(this.Form1_Load);

@@ -32,8 +32,8 @@
 			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
 			this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.createToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.reloadDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
 			this.menuStrip1.SuspendLayout();
 			this.SuspendLayout();
@@ -70,15 +70,8 @@
 			// 
 			this.createToolStripMenuItem.Name = "createToolStripMenuItem";
 			this.createToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-			this.createToolStripMenuItem.Text = "Create";
+			this.createToolStripMenuItem.Text = "&New";
 			this.createToolStripMenuItem.Click += new System.EventHandler(this.createToolStripMenuItem_Click);
-			// 
-			// exitToolStripMenuItem
-			// 
-			this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-			this.exitToolStripMenuItem.Size = new System.Drawing.Size(38, 20);
-			this.exitToolStripMenuItem.Text = "Exit";
-			this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
 			// 
 			// reloadDataToolStripMenuItem
 			// 
@@ -86,6 +79,13 @@
 			this.reloadDataToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
 			this.reloadDataToolStripMenuItem.Text = "Reload Data";
 			this.reloadDataToolStripMenuItem.Click += new System.EventHandler(this.reloadDataToolStripMenuItem_Click);
+			// 
+			// exitToolStripMenuItem
+			// 
+			this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+			this.exitToolStripMenuItem.Size = new System.Drawing.Size(38, 20);
+			this.exitToolStripMenuItem.Text = "Exit";
+			this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
 			// 
 			// FrmMain
 			// 

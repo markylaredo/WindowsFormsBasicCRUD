@@ -1,24 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using Dapper;
+using System;
 using System.Data;
 using System.Data.SqlClient;
 using System.Diagnostics;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsBasicCRUD.Helpers;
 using WindowsFormsBasicCRUD.Models;
-using Dapper;
 
-namespace WindowsFormsBasicCRUD
+namespace WindowsFormsBasicCRUD.Views
 {
-	public partial class Registration : Form
+	public partial class FrmUpdate : Form
 	{
-		private const string Connection = "Data Source=.;Initial Catalog=TUTStudentDb;Integrated Security=True";
-
-		public Registration()
+		public FrmUpdate()
 		{
 			InitializeComponent();
 		}
@@ -43,12 +36,9 @@ namespace WindowsFormsBasicCRUD
 
 			try
 			{
-				using (IDbConnection con = new SqlConnection(Connection))
-				{
-					const string query = "INSERT INTO Student (Name,Birthdate,Gender,Address,School,Status,Recorded)" +
-										 " VALUES (@Name,@Birthdate,@Gender,@Address,@School,@Status,@Recorded)";
-					con.Execute(query, std);
-				}
+				string query = "INSERT INTO Student(Name, Birthdate, Gender, Address, School, Status, Recorded)" +
+							   " VALUES (@Name,@Birthdate,@Gender,@Address,@School,@Status,@Recorded)";
+				std.Execute(query);
 
 				MessageBox.Show("Successfully saved!", "System Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
 			}
@@ -78,8 +68,13 @@ namespace WindowsFormsBasicCRUD
 			dt.Rows.Add(row2);
 
 			cmbStatus.DataSource = dt; ;
-			cmbStatus.DisplayMember= "Text";
+			cmbStatus.DisplayMember = "Text";
 			cmbStatus.ValueMember = "Val";
+		}
+
+		private void GroupBox1_Enter(object sender, EventArgs e)
+		{
+
 		}
 	}
 }

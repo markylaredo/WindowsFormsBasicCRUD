@@ -25,7 +25,7 @@ namespace WindowsFormsBasicCRUD
 		private void createToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			//use using to dispose resource after use
-			using (var reg = new Registration())
+			using (var reg = new FrmUpdate())
 			{
 				reg.ShowDialog();
 			}
