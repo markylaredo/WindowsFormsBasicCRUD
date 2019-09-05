@@ -38,7 +38,7 @@ namespace WindowsFormsBasicCRUD.Views
 			{
 				string query = "INSERT INTO Student(Name, Birthdate, Gender, Address, School, Status, Recorded)" +
 							   " VALUES (@Name,@Birthdate,@Gender,@Address,@School,@Status,@Recorded)";
-				std.Execute(query);
+				std.Insert(query);
 
 				MessageBox.Show("Successfully saved!", "System Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
 			}

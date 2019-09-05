@@ -8,6 +8,8 @@ namespace WindowsFormsBasicCRUD.Models
 {
 	public class Student
 	{
+		public Guid GStudentId { get; set; }
+
 		public string Name { get; set; }
 		public DateTime Birthdate { get; set; }
 		public string Gender { get; set; }
