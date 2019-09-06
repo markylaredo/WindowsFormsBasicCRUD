@@ -40,6 +40,7 @@ namespace WindowsFormsBasicCRUD.Views
 							   " VALUES (@Name,@Birthdate,@Gender,@Address,@School,@Status,@Recorded)";
 				std.Insert(query);
 
+				ClearFields();
 				MessageBox.Show("Successfully saved!", "System Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
 			}
 			catch (Exception exception)
@@ -76,5 +77,18 @@ namespace WindowsFormsBasicCRUD.Views
 		{
 
 		}
+
+		#region Helpers
+		private void ClearFields()
+		{
+			txtName.Clear();
+			drpDOB.Value = DateTime.Now;
+			rdbFemale.Checked = false;
+			rdbMale.Checked = false;
+			cmbStatus.SelectedIndex = 0;
+			txtAddress.Clear();
+			txtSchool.Clear();
+		}
+		#endregion
 	}
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsBasicCRUD.Helpers;
@@ -137,5 +138,6 @@ namespace WindowsFormsBasicCRUD.Views
 
 			e.Cancel = dialog != DialogResult.Yes;
 		}
+ 
 	}
 }

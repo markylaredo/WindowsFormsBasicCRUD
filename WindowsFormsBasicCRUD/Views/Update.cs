@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -22,17 +23,47 @@ namespace WindowsFormsBasicCRUD.Views
 			InitializeComponent();
 		}
 
-		private void BtnUpdate_Click(object sender, EventArgs e)
+		private async void BtnUpdate_Click(object sender, EventArgs e)
 		{
+			var query = "update Student set Name=@Name,Birthdate=@Birthdate,Gender=@Gender,Address=@Address,School=@School,Status=@Status " +
+						"where GStudentId=@GStudentId";
+
+			var std = new Student();
+			std.GStudentId = _studentId;
+			std.Name = txtName.Text;
+			std.Birthdate = drpDOB.Value;
+			std.Gender = rdbFemale.Checked
+						? "F" : rdbMale.Checked
+						? "M" : "";
+			var stats = cmbStatus.SelectedValue.ToString();
+			std.Status = (Status)Enum.Parse(typeof(Status), stats);
+			std.Address = txtAddress.Text;
+			std.School = txtSchool.Text;
+			try
+			{
+
+				await std.ExecuteAsync(query).ConfigureAwait(false);
+				MessageBox.Show("Record successfully updated.", "System Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+				ClearFields();						 
+			}
+			catch (Exception)
+			{
+				throw;
+			}
 		}
 
 		private async void Update_Load(object sender, EventArgs e)
 		{
-			#region Status
+			#region Setup comboBox value for Status
 
 			var dt = new DataTable();
-			dt.Columns.Add("Text");
+			dt.Columns.Add("Text", typeof(string));
 			dt.Columns.Add("Val", typeof(byte));
+
+			var rNoVal = dt.NewRow();
+			rNoVal["Text"] = "Select";
+			dt.Rows.Add(rNoVal);
 
 			var row = dt.NewRow();
 			row["Text"] = Status.Active.ToString();
@@ -50,13 +81,12 @@ namespace WindowsFormsBasicCRUD.Views
 
 			#endregion
 
+			#region   Get Student Details  
+
 			var query = "select top 1 GStudentId, Name,Birthdate,Gender,Address,School,cast(Status as int) as Status,Recorded " +
 						"FROM Student " +
 						"where GStudentId=@GStudentId";
-			var result = await DataBase.GetById<Student>(query, new
-			{
-				GStudentId = _studentId
-			});
+			var result = await DataBase.GetById<Student>(query, new { GStudentId = _studentId });
 
 			txtName.Text = result.Name;
 			drpDOB.Value = result.Birthdate;
@@ -64,6 +94,38 @@ namespace WindowsFormsBasicCRUD.Views
 			cmbStatus.SelectedValue = result.Status;
 			txtAddress.Text = result.Address;
 			txtSchool.Text = result.School;
+
+			#endregion
 		}
+
+		#region Helpers
+		private void ClearFields()
+		{
+			if (InvokeRequired)
+			{
+				Debug.WriteLine("Invoke is required");
+				Invoke(new Action(delegate
+				{
+					txtName.Clear();
+					drpDOB.Value = DateTime.Now;
+					rdbFemale.Checked = false;
+					rdbMale.Checked = false;
+					cmbStatus.SelectedIndex = 0;
+					txtAddress.Clear();
+					txtSchool.Clear();
+				}));
+			}
+			else
+			{
+				txtName.Clear();
+				drpDOB.Value = DateTime.Now;
+				rdbFemale.Checked = false;
+				rdbMale.Checked = false;
+				cmbStatus.SelectedIndex = 0;
+				txtAddress.Clear();
+				txtSchool.Clear();
+			}
+		}
+		#endregion
 	}
 }
