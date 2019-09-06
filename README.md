@@ -1,7 +1,7 @@
 # Dapper CRUD
 Basic CRUD Operation using dapper ORM.
 
-## Funcitons
+## Functions
 * Add
 * Update
 * Delete
