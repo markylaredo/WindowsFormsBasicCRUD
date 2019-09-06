@@ -1,8 +1,17 @@
 # Dapper CRUD
 Basic CRUD Operation using dapper ORM.
 
+## Funcitons
+* Add
+* Update
+* Delete
+* Read
+
+
 ## TODO
 * Run Script (Sql Service 2012 or higher)
+
+
 ```sql
 USE [master]
 GO
