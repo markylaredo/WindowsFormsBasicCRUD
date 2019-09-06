@@ -1,4 +1,4 @@
-# Dapper CRUD
+# Dapper in C#
 Basic CRUD Operation using dapper ORM.
 
 ## Functions
