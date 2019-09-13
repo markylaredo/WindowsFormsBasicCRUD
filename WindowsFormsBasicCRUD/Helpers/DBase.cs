@@ -8,10 +8,16 @@ using WindowsFormsBasicCRUD.Models;
 
 namespace WindowsFormsBasicCRUD.Helpers
 {
-	public static class Database
+	public static class DBase
 	{
 		private const string Connection = "Data Source=.;Initial Catalog=TUTStudentDb;Integrated Security=True";
 
+		/// <summary>
+		/// Insert Record
+		/// </summary>
+		/// <typeparam name="TEntity"></typeparam>
+		/// <param name="obj"></param>
+		/// <param name="query"></param>
 		public static void Insert<TEntity>(this TEntity obj, string query)
 		{
 			using (IDbConnection con = new SqlConnection(Connection))
@@ -20,6 +26,12 @@ namespace WindowsFormsBasicCRUD.Helpers
 			}
 		}
 
+		/// <summary>
+		/// Execute query
+		/// </summary>
+		/// <typeparam name="TEntity"></typeparam>
+		/// <param name="obj"></param>
+		/// <param name="query"></param>
 		public static void Execute<TEntity>(this TEntity obj, string query)
 		{
 			using (IDbConnection con = new SqlConnection(Connection))
@@ -28,6 +40,13 @@ namespace WindowsFormsBasicCRUD.Helpers
 			}
 		}
 
+		/// <summary>
+		/// Execute Query Async
+		/// </summary>
+		/// <typeparam name="TEntity"></typeparam>
+		/// <param name="obj"></param>
+		/// <param name="query"></param>
+		/// <returns></returns>
 		public static async Task ExecuteAsync<TEntity>(this TEntity obj, string query)
 		{
 			using (IDbConnection con = new SqlConnection(Connection))
@@ -36,6 +55,12 @@ namespace WindowsFormsBasicCRUD.Helpers
 			}
 		}
 
+		/// <summary>
+		/// Fetch records
+		/// </summary>
+		/// <typeparam name="TEntity"></typeparam>
+		/// <param name="query"></param>
+		/// <returns></returns>
 		public static IEnumerable<TEntity> LoadData<TEntity>(string query)
 		{
 			using (IDbConnection con = new SqlConnection(Connection))
@@ -44,6 +69,12 @@ namespace WindowsFormsBasicCRUD.Helpers
 			}
 		}
 
+		/// <summary>
+		/// Fetch records async
+		/// </summary>
+		/// <typeparam name="TEntity"></typeparam>
+		/// <param name="query"></param>
+		/// <returns></returns>
 		public static async Task<IEnumerable<TEntity>> LoadDataAsync<TEntity>(string query)
 		{
 			using (IDbConnection con = new SqlConnection(Connection))
@@ -52,6 +83,13 @@ namespace WindowsFormsBasicCRUD.Helpers
 			}
 		}
 
+		/// <summary>
+		/// Get record by id
+		/// </summary>
+		/// <typeparam name="TEntity"></typeparam>
+		/// <param name="query"></param>
+		/// <param name="param"></param>
+		/// <returns></returns>
 		public static async Task<TEntity> GetById<TEntity>(string query, object param)
 		{
 			using (IDbConnection con = new SqlConnection(Connection))

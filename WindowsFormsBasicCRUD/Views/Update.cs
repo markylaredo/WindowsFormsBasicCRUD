@@ -87,7 +87,7 @@ namespace WindowsFormsBasicCRUD.Views
 			var query = "select top 1 GStudentId, Name,Birthdate,Gender,Address,School,cast(Status as int) as Status,Recorded " +
 						"FROM Student " +
 						"where GStudentId=@GStudentId";
-			var result = await Database.GetById<Student>(query, new { GStudentId = _studentId });
+			var result = await DBase.GetById<Student>(query, new { GStudentId = _studentId });
 
 			txtName.Text = result.Name;
 			drpDOB.Value = result.Birthdate;

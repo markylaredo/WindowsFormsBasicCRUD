@@ -55,7 +55,7 @@
     <Compile Include="Views\FrmMain.Designer.cs">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="Helpers\DataBase.cs" />
+    <Compile Include="Helpers\DBase.cs" />
     <Compile Include="Views\Registration.cs">
       <SubType>Form</SubType>
     </Compile>
