@@ -8,11 +8,19 @@ using WindowsFormsBasicCRUD.Models;
 
 namespace WindowsFormsBasicCRUD.Helpers
 {
-	public static class DataBase
+	public static class Database
 	{
 		private const string Connection = "Data Source=.;Initial Catalog=TUTStudentDb;Integrated Security=True";
 
 		public static void Insert<TEntity>(this TEntity obj, string query)
+		{
+			using (IDbConnection con = new SqlConnection(Connection))
+			{
+				con.Execute(query, obj);
+			}
+		}
+
+		public static void Execute<TEntity>(this TEntity obj, string query)
 		{
 			using (IDbConnection con = new SqlConnection(Connection))
 			{
@@ -47,7 +55,7 @@ namespace WindowsFormsBasicCRUD.Helpers
 		public static async Task<TEntity> GetById<TEntity>(string query, object param)
 		{
 			using (IDbConnection con = new SqlConnection(Connection))
-			{	
+			{
 				return await con.QueryFirstOrDefaultAsync<TEntity>(query, param);
 			}
 		}

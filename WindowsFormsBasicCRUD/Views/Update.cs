@@ -23,7 +23,7 @@ namespace WindowsFormsBasicCRUD.Views
 			InitializeComponent();
 		}
 
-		private async void BtnUpdate_Click(object sender, EventArgs e)
+		private void BtnUpdate_Click(object sender, EventArgs e)
 		{
 			var query = "update Student set Name=@Name,Birthdate=@Birthdate,Gender=@Gender,Address=@Address,School=@School,Status=@Status " +
 						"where GStudentId=@GStudentId";
@@ -42,10 +42,11 @@ namespace WindowsFormsBasicCRUD.Views
 			try
 			{
 
-				await std.ExecuteAsync(query).ConfigureAwait(false);
+				 std.Execute(query);
 				MessageBox.Show("Record successfully updated.", "System Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-				ClearFields();						 
+				ClearFields();	
+ 				Close();
 			}
 			catch (Exception)
 			{
@@ -86,7 +87,7 @@ namespace WindowsFormsBasicCRUD.Views
 			var query = "select top 1 GStudentId, Name,Birthdate,Gender,Address,School,cast(Status as int) as Status,Recorded " +
 						"FROM Student " +
 						"where GStudentId=@GStudentId";
-			var result = await DataBase.GetById<Student>(query, new { GStudentId = _studentId });
+			var result = await Database.GetById<Student>(query, new { GStudentId = _studentId });
 
 			txtName.Text = result.Name;
 			drpDOB.Value = result.Birthdate;

@@ -43,7 +43,7 @@ namespace WindowsFormsBasicCRUD.Views
 		private async Task LoadData()
 		{
 			var query = "SELECT GStudentId, Name,Birthdate,Gender,Address,School,cast(Status as int) as Status,Recorded FROM Student";
-			var list = await DataBase.LoadDataAsync<Student>(query);
+			var list = await Database.LoadDataAsync<Student>(query);
 			dataGridView1.DataSource = list;
 			//Hide the Column ID
 			dataGridView1.Columns[0].Visible = false;
