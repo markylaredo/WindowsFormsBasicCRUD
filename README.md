@@ -10,4 +10,4 @@ Basic CRUD Operation using dapper ORM.
 
 ## TODO
 * Run Script (Sql Service 2012 or higher)
- TUTStudentScript.sql
+ ```TUTStudentScript.sql ```
