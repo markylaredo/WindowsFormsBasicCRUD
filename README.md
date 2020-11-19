@@ -1,4 +1,4 @@
-# Dapper in C#
+# C# Windows form using Dapper ORM
 Basic CRUD Operation using dapper ORM.
 
 ## Functions
